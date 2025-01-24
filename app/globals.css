@@ -2,20 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 100%;
+    --border: 215 27.9% 16.9%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-chatbg text-foreground;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.message-bubble {
+  @apply rounded-2xl p-3 shadow-message max-w-[80%];
+}
+
+.message-received {
+  @apply bg-messagebg text-white;
+}
+
+.message-sent {
+  @apply bg-accent text-white ml-auto;
+}
+
+.nav-icon {
+  @apply p-3 rounded-lg hover:bg-messagebg transition-colors duration-200 text-secondary-foreground hover:text-white;
+}
+
+.avatar {
+  @apply rounded-full border-2 border-accent;
+}
+
+.sidebar-item {
+  @apply flex items-center gap-3 p-3 rounded-lg hover:bg-messagebg/50 transition-all duration-200 cursor-pointer border border-transparent hover:border-muted/20;
 }
